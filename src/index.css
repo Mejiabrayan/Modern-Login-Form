@@ -17,3 +17,15 @@
   src: url('../fonts/Oswald/static/Oswald-Light.ttf') format('truetype');
 
 }
+
+@media (max-width: 767px) {
+  .text-5xl {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-5xl {
+    font-size: 40px;
+  }
+}

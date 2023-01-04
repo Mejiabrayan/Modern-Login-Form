@@ -6,13 +6,9 @@ import locus from '../images/lucas.jpg';
 import oladimeji from '../images/oladimeji.jpg';
 import { AnimatePresence, motion } from 'framer-motion';
 import FormInput from './formInput';
+import AuthorCard from '../components/authorCard';
 
 const images = [locus, oladimeji];
-
-const transition = {
-  duration: 1,
-  ease: [0.43, 0.13, 0.23, 0.96],
-};
 
 const authors = [
   {
@@ -34,11 +30,16 @@ const authors = [
   },
 ];
 
+const transition = {
+  duration: 1,
+  ease: [0.43, 0.13, 0.23, 0.96],
+};
 const variants = {
   initial: { x: '-100%', opacity: 0 },
   animate: { x: 0, opacity: 1 },
   exit: { x: '100%', opacity: 0 },
 };
+
 export default function Form() {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentAuthor, setCurrentAuthor] = useState([0]);
@@ -58,71 +59,52 @@ export default function Form() {
       <div className='flex'>
         <AnimatePresence>
           <motion.div
+            key={currentImage}
             animate='animate'
             initial='initial'
             exit='exit'
             transition={transition}
             variants={variants}
-            style={{
-              backgroundImage: `url(${images[currentImage]})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              height: '100vh',
-              width: '50%',
-              flexGrow: 1,
-              position: 'relative',
-              transform: 'translateX',
-            }}
+            className='w-1/2 h-screen bg-cover bg-center hidden sm:block md:block relative'
+            style={{ backgroundImage: `url(${images[currentImage]})` }}
           >
-            <div
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'contain',
-                width: '100%',
-                height: '100%',
-                padding: '0 20px',
-                fontFamily: 'Oswald',
-              }}
-            >
+            <div className='absolute top-0 p-6 left-0 w-full h-full flex items-center justify-center font-oswald md:text-left text-center'>
               <h1 className='text-5xl text-white'>
                 "Art is the expression of the soul, the manifestation of emotion
                 and imagination into something tangibly beautiful."
               </h1>
             </div>
-            <div
-              className='absolute bottom-0 left-0 p-6'
-              style={{ fontFamily: 'Oswald Light' }}
-            >
-              <h2 className='text-white mb-2'>{authors[currentAuthor].name}, </h2>
-              <p className='text-white '>{authors[currentAuthor].occupation}</p>
-              <p className='text-white'>{authors[currentAuthor].company}</p>
-            </div>
 
-            <div
-              className='absolute bottom-0 right-0 p-6 '
-              style={{ display: 'flex', width: '100px' }}
-            >
+            <AuthorCard author={authors[currentAuthor]} />
+            <div className='flex absolute bottom-0 right-0 p-6'>
               <img
                 onClick={handleToggle}
                 src={LeftArrow}
                 alt='Toggle Icon'
-                style={{ cursor: 'pointer', width: '30px', marginRight: '5px' }}
+                className='hidden sm:block md:block'
+                style={{
+                  cursor: 'pointer',
+                  width: '30px',
+                  marginRight: '5px',
+                }}
               />
+
               <img
+                className='hidden sm:block md:block'
                 onClick={handleToggle}
                 src={RightArrow}
                 alt='Toggle Icon'
-                style={{ cursor: 'pointer', width: '30px', marginLeft: '5px' }}
+                style={{
+                  cursor: 'pointer',
+                  width: '30px',
+                  marginLeft: '5px',
+                }}
               />
             </div>
           </motion.div>
         </AnimatePresence>
         {/* our form input */}
-        <FormInput />
+        <FormInput className='sm:w-full' />
       </div>
     </>
   );
