@@ -56,7 +56,7 @@ export default function FormInput() {
     <div className='text-center mt-4'>
       <p className='text-gray-500'>
         Already have an account?{' '}
-        <a href='#' className='text-blue-500 hover:text-blue-700'>
+        <a href='#' className='text-black underline'>
             Sign in
         </a>
         </p>
