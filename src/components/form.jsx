@@ -22,12 +22,7 @@ const authors = [
     occupation: 'Photographer & Visual Artist',
     company: 'Oladimeji',
     website: 'https://www.oladimeg.com/contact',
-  },
-  {
-    name: 'Pablo Picasso',
-    occupation: 'Painter, Sculptor',
-    company: 'Cubism',
-  },
+  }
 ];
 
 const transition = {
