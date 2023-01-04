@@ -6,7 +6,7 @@ export default function FormInput() {
   return (
 <div className='p-4 m-8 flex-grow'>
   <form className='bg-white p-6'>
-    <h2 className='text-2xl font-bold mt-4 md:mt-8'>Create an account</h2>
+    <h2 className='text-2xl mt-4 md:mt-8' style={{fontFamily: 'Oswald'}}>Create an account</h2>
     <p className='text-gray-500 mb-4'>
       Let's get started with your 30 day free trial.
     </p>
